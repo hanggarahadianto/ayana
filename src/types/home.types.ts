@@ -3,5 +3,9 @@ export interface Home {
   title: string;
   content: string;
   image: string;
+  address: string;
+  bathroom: string;
+  bedroom: string;
+  square: string;
   //   restaurant_iD: string;
 }

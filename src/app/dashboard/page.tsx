@@ -1,6 +1,6 @@
 import HomeCard from "@/components/card/HomeCard";
 import { Home } from "@/types/home.types";
-import { GetHomeList } from "@/utils/api/home.api";
+import { GetHomeList } from "@/utils/api/home/getHome.api";
 import React from "react";
 
 export default async function DashboardPage() {
@@ -15,6 +15,10 @@ export default async function DashboardPage() {
               title={Home.title}
               content={Home.content}
               image={Home.image}
+              address={Home.address}
+              bathroom={Home.bathroom}
+              bedroom={Home.bedroom}
+              square={Home.square}
             />
           </div>
         ))}

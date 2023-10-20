@@ -21,6 +21,7 @@ export default function RootLayout({
       <body className={quicksland.className}>
         <Navbar />
         {children}
+
         <Community />
         <Footer />
       </body>

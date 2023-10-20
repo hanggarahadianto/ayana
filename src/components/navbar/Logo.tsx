@@ -8,7 +8,7 @@ const Logo = () => {
     <Link href={"/"}>
       <Image
         className="hiddden md:block cursor-pointer"
-        src="/images/avika.png"
+        src="/images/ayana.png"
         height="100"
         width="100"
         alt="Logo"

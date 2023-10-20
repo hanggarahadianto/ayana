@@ -35,9 +35,11 @@ const RestaurantPage: FC<RestaurantProps> = async ({ params }) => {
         <div className="flex justify-center content-center bg-red-50 px-4 py-4 ">
           <section className="mt-10 w-7/12 px-4 py-2 bg-slate-100 mr-20 rounded-lg shadow-2xl">
             <div className="border-b-2 border-b-gray-200 py-8">
-              <p className="text-3xl font-bold">{homeData.data.title}</p>
-              <p className="font-medium text-base">
-                Wirasana Purbalingga Jawa Tengah
+              <p className="text-4xl font-bold text-green-600">
+                {homeData.data.title}
+              </p>
+              <p className="font-medium text-base text-purple-800">
+                {homeData.data.address}
               </p>
             </div>
 
@@ -50,9 +52,24 @@ const RestaurantPage: FC<RestaurantProps> = async ({ params }) => {
             />
             <div className="py-4">
               <div className="flex gap-x-12">
-                <BedIcon className="text-blue-700" />
-                <BathIcon className="text-blue-700" />
-                <SquareGanttIcon className="text-blue-700" />
+                <div className="flex gap-2">
+                  <BedIcon className="text-blue-700" />
+                  <p className="font-semibold text-blue-700">
+                    {homeData.data.bedroom}
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <BathIcon className="text-blue-700" />
+                  <p className="font-semibold text-blue-700">
+                    {homeData.data.bathroom}
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <SquareGanttIcon className="text-blue-700" />
+                  <p className="font-semibold text-blue-700">
+                    {homeData.data.square}
+                  </p>
+                </div>
               </div>
             </div>
             <div className="py-8 w-11/12">
