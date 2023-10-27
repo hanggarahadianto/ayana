@@ -2,7 +2,6 @@
 
 import React from "react";
 
-import { StarFilledIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import Image from "next/image";
 import { BathIcon, BedIcon, SquareGanttIcon } from "lucide-react";

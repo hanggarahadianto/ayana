@@ -19,11 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={quicksland.className}>
-        <Navbar />
+        {/* <Navbar /> */}
         {children}
 
-        <Community />
-        <Footer />
+        {/* <Community />
+        <Footer /> */}
       </body>
     </html>
   );

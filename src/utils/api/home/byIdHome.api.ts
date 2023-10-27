@@ -10,6 +10,6 @@ export const HomeDetails = async (id: string) => {
     return;
   }
   const homeID: Home[] = await response.json();
-  // console.log(restaurantDataID);
+  
   return homeID;
 };

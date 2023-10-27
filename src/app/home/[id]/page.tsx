@@ -1,25 +1,17 @@
 import RequestForm from "@/components/form/Request";
 import { Button } from "@/components/ui/button";
-import { HomeDetails } from "@/utils/api/home.api";
-import {
-  BathIcon,
-  BedIcon,
-  PhoneCall,
-  Square,
-  SquareAsteriskIcon,
-  SquareDashedBottom,
-  SquareGanttIcon,
-} from "lucide-react";
+import { HomeDetails } from "@/utils/api/home/byIdHome.api";
+import { BathIcon, BedIcon, SquareGanttIcon } from "lucide-react";
 import Image from "next/image";
 import React, { FC } from "react";
 
-interface RestaurantProps {
+interface HomeProps {
   params: {
     id: string;
   };
 }
 
-const RestaurantPage: FC<RestaurantProps> = async ({ params }) => {
+const RestaurantPage: FC<HomeProps> = async ({ params }) => {
   const homeData: any = await HomeDetails(params.id);
 
   return (
