@@ -26,6 +26,13 @@ export default function AdminLayout({
               </Link>
             </div>
             <div>
+              <Link href={"/admin/tambah-rumah"}>
+                <Button>
+                  <p>Tambah Rumah</p>
+                </Button>
+              </Link>
+            </div>
+            <div>
               <Link href={"/admin/home-list"}>
                 <Button className="bg-blue-200 hover:bg-blue-300">
                   <p className="text-2xl font-bold">Home List</p>

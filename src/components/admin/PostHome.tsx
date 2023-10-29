@@ -22,6 +22,7 @@ const PostHome = () => {
     resolver: zodResolver(HomeFormSchema),
   });
 
+  // const form = new FormData();
   const onSubmit = async (data: FormData) => {
     try {
       const body = {
@@ -31,7 +32,6 @@ const PostHome = () => {
         bathroom: data.bathroom,
         bedroom: data.bedroom,
         square: data.square,
-        file: data.file,
       };
       console.log(body);
       const response = await fetch("http://localhost:7000/home/post", {

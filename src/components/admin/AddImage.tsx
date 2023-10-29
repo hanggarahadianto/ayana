@@ -1,21 +1,45 @@
 "use client";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import * as z from "zod";
+
 export default function Upload() {
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = async (data: any) => {
-    const image = data.profile[0];
+  const ImageSchema = z.object({
+    // file: z.string().min(1, "image is required"),
+    title: z.any(),
+    content: z.any(),
+    address: z.any(),
+    bathroom: z.any(),
+    bedroom: z.any(),
+    square: z.any(),
+    file: z.any(),
+
+    // content: z.string(),
+    // title: z.string().min(1, "name is required").max(20),
+  });
+
+  type imageData = z.infer<typeof ImageSchema>;
+
+  const form = useForm<z.infer<typeof ImageSchema>>({
+    resolver: zodResolver(ImageSchema),
+  });
+
+  const onSubmit = async (data: imageData) => {
+    const image = data.file[0];
+    const title = data.title;
+
     const formData = new FormData();
     formData.append("file", image);
-    formData.append("upload_preset", "CLOUDINARY_PRESET_NAME");
+    formData.append("title", title);
+
     const uploadResponse = await fetch("http://localhost:7000/home/img", {
       method: "POST",
       mode: "no-cors",
+
       body: formData,
     });
-    const uploadedImageData = await uploadResponse.json();
-    const imageUrl = uploadedImageData.secure_url;
-    console.log(imageUrl);
   };
 
   return (
@@ -27,7 +51,51 @@ export default function Upload() {
         Upload file
       </label>
       <input
-        {...register("profile")}
+        {...register("title")}
+        className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg mb-5 bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        // aria-describedby="file_input_help"
+        // id="file_input"
+        type="text"
+      />
+      <input
+        {...register("content")}
+        placeholder="content"
+        className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg mb-5 bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        type="text"
+      />
+      <input
+        {...register("address")}
+        placeholder="address"
+        className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg mb-5 bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        type="text"
+      />
+      <input
+        {...register("bathroom")}
+        placeholder="bathroom"
+        className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg mb-5 bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        type="text"
+      />
+      <input
+        {...register("bedroom")}
+        placeholder="bedroom"
+        className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg mb-5 bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        type="text"
+      />
+      <input
+        {...register("square")}
+        placeholder="square"
+        className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg mb-5 bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        type="text"
+      />
+      <input
+        {...register("file")}
+        className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        aria-describedby="file_input_help"
+        id="file_input"
+        type="file"
+      />
+      <input
+        {...register("file")}
         className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
         aria-describedby="file_input_help"
         id="file_input"

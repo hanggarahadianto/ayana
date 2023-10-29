@@ -22,6 +22,8 @@ const HomeAdmin: React.FC<HomeAdminProps> = (data: HomeAdminProps) => {
             className="w-60 h-16 rounded-xl object-cover"
             src={data.image}
             alt={data.title}
+            priority={false}
+            quality={75}
             width="600"
             height="900"
           />

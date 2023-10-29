@@ -17,6 +17,8 @@ const HomeCard: React.FC<HomeProps> = (data: HomeProps) => {
             className="w-30 h-52"
             src={data.image}
             alt={data.title}
+            quality={75}
+            priority={false}
             width="600"
             height="900"
           />
