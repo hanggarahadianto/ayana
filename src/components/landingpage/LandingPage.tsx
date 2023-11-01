@@ -3,15 +3,17 @@ import React from "react";
 
 export default function LandingPage() {
   return (
-    <div className="grid grid-cols-10  w-full h-[35rem]">
+    <div className="grid grid-cols-10  w-full lg:h-[35rem] shadow-lg h-60">
       <div className="grid col-span-5 bg-blue-200">
-        <div className="flex px-16 py-12">
-          <p className="text-7xl font-bold mr-3">Discover</p>
-          <p className="text-5xl font-medium">Your Dream House Here</p>
+        <div className="lg:px-32 lg:py-20 px-4 py-8">
+          <p className="lg:text-7xl text-2xl font-bold mr-3">Discover</p>
+          <p className="lg:text-5xl text-xl font-medium lg:mt-10 mt-3">
+            Your Dream House Here
+          </p>
         </div>
       </div>
       <div className="grid col-span-5 bg-red-200">
-        <div className="flex justify-center ">
+        <div className="flex justify-center">
           <Image
             className="rounded-tl-3xl"
             src="/images/image1.jpg"

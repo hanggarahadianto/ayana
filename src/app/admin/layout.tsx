@@ -17,38 +17,52 @@ export default function AdminLayout({
     <>
       <div className="grid grid-cols-12">
         <div className="col-span-3 bg-blue-100">
-          <div className="px-16 py-8 grid gap-4">
+          <div className="px-16 py-12 grid gap-4">
             <div>
               <Link href={"/admin/post-home"}>
-                <Button>
-                  <p>Add New Home</p>
+                <Button className="bg-blue-400 hover:bg-blue-500">
+                  <p className="text-white font-semibold">Add New Home</p>
                 </Button>
               </Link>
             </div>
             <div>
               <Link href={"/admin/tambah-rumah"}>
-                <Button>
-                  <p>Tambah Rumah</p>
+                <Button className="bg-blue-400 hover:bg-blue-500">
+                  <p className="text-white font-semibold">Tambah Rumah</p>
                 </Button>
               </Link>
             </div>
             <div>
               <Link href={"/admin/home-list"}>
-                <Button className="bg-blue-200 hover:bg-blue-300">
-                  <p className="text-2xl font-bold">Home List</p>
+                <Button className="bg-blue-400 hover:bg-blue-500">
+                  <p className="text-white font-semibold">Home List</p>
                 </Button>
               </Link>
             </div>
             <div>
               <Link href={"/admin/add-image"}>
-                <Button className="bg-blue-200 hover:bg-blue-300">
-                  <p className="text-2xl font-bold">Add Image</p>
+                <Button className="bg-blue-400 hover:bg-blue-500">
+                  <p className="text-white font-semibold">Add Image</p>
+                </Button>
+              </Link>
+            </div>
+            <div>
+              <Link href={"/admin/reservation"}>
+                <Button className="bg-blue-400 hover:bg-blue-500">
+                  <p className="text-white font-semibold">Reservation</p>
+                </Button>
+              </Link>
+            </div>
+            <div className="bottom-1">
+              <Link href={"/admin/login"}>
+                <Button className="bg-green-400 hover:bg-green-500">
+                  <p className="text-white font-semibold">Login</p>
                 </Button>
               </Link>
             </div>
           </div>
         </div>
-        <div className="col-span-8 px-16 py-8">{children}</div>
+        <div className="col-span-9 px-16 py-8 bg-red-200">{children}</div>
       </div>
     </>
   );

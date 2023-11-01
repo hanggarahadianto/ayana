@@ -4,7 +4,7 @@ import DashboardSection from "@/components/section/DashboardSection";
 
 export default function Home() {
   return (
-    <main className="bg-slate-100 w-full h-full">
+    <main className="bg-slate-100">
       <LandingPage />
       <DashboardSection />
       <DashboardPage />

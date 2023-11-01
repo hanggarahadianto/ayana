@@ -12,9 +12,18 @@ const HomeCard: React.FC<HomeProps> = (data: HomeProps) => {
   return (
     <div>
       <Link href={`/home/${data.ID}`}>
-        <div className="md:max-w-md md:mx-auto md:h-96 shadow-md rounded-xl overflow-hidden relative">
+        <div className="md:max-w-md md:mx-auto h-72 lg:h-96 shadow-md rounded-xl overflow-hidden relative">
           <Image
-            className="w-30 h-52"
+            className="lg:hidden"
+            src={data.image}
+            alt={data.title}
+            quality={75}
+            priority={false}
+            width="200"
+            height="180"
+          />
+          <Image
+            className="w-30 h-52 hidden lg:block"
             src={data.image}
             alt={data.title}
             quality={75}
@@ -25,28 +34,36 @@ const HomeCard: React.FC<HomeProps> = (data: HomeProps) => {
 
           <div className="p-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-2xl font-semibold text-green-500">
+              <h3 className="lg:text-2xl text-sm font-semibold text-green-500">
                 {data.title}
               </h3>
             </div>
-            <p className="text-purple-900 font-semibold">{data.address}</p>
+            <p className="text-purple-900 font-semibold mt-2 lg:mt-4 text-xs lg:text-lg">
+              {data.address}
+            </p>
 
             {/* <p className="abosulute bottom-4 right-4 p-2 z-30">
               {limitedContent}
             </p> */}
-            <div className="py-8">
-              <div className="flex gap-x-12">
-                <div className="flex gap-2">
-                  <BedIcon className="text-blue-700" />
-                  <p className="font-semibold text-blue-700">{data.bedroom}</p>
+            <div className="lg:py-8 py-4">
+              <div className="lg:flex w-full lg:gap-x-10">
+                <div className="flex lg:gap-2 gap-3">
+                  <BedIcon className="text-blue-700 text-xs lg:text-lg" />
+                  <p className="font-semibold text-blue-700 text-xs lg:text-lg">
+                    {data.bedroom}
+                  </p>
                 </div>
                 <div className="flex gap-2">
                   <BathIcon className="text-blue-700" />
-                  <p className="font-semibold text-blue-700">{data.bathroom}</p>
+                  <p className="font-semibold text-blue-700 text-xs lg:text-lg">
+                    {data.bathroom}
+                  </p>
                 </div>
                 <div className="flex gap-2">
                   <SquareGanttIcon className="text-blue-700" />
-                  <p className="font-semibold text-blue-700">{data.square}</p>
+                  <p className="font-semibold text-blue-700 text-xs lg:text-lg">
+                    {data.square}
+                  </p>
                 </div>
               </div>
             </div>
