@@ -20,35 +20,35 @@ export default function AdminLayout({
           <div className="px-16 py-12 grid gap-4">
             <div>
               <Link href={"/admin/post-home"}>
-                <Button className="bg-blue-400 hover:bg-blue-500">
+                <Button className="bg-blue-400 hover:bg-blue-500 w-36">
                   <p className="text-white font-semibold">Add New Home</p>
                 </Button>
               </Link>
             </div>
             <div>
               <Link href={"/admin/tambah-rumah"}>
-                <Button className="bg-blue-400 hover:bg-blue-500">
+                <Button className="bg-blue-400 hover:bg-blue-500 w-36">
                   <p className="text-white font-semibold">Tambah Rumah</p>
                 </Button>
               </Link>
             </div>
             <div>
               <Link href={"/admin/home-list"}>
-                <Button className="bg-blue-400 hover:bg-blue-500">
+                <Button className="bg-blue-400 hover:bg-blue-500 w-36">
                   <p className="text-white font-semibold">Home List</p>
                 </Button>
               </Link>
             </div>
             <div>
               <Link href={"/admin/add-image"}>
-                <Button className="bg-blue-400 hover:bg-blue-500">
+                <Button className="bg-blue-400 hover:bg-blue-500 w-36">
                   <p className="text-white font-semibold">Add Image</p>
                 </Button>
               </Link>
             </div>
             <div>
               <Link href={"/admin/reservation"}>
-                <Button className="bg-blue-400 hover:bg-blue-500">
+                <Button className="bg-blue-400 hover:bg-blue-500 w-36">
                   <p className="text-white font-semibold">Reservation</p>
                 </Button>
               </Link>
@@ -62,7 +62,7 @@ export default function AdminLayout({
             </div>
           </div>
         </div>
-        <div className="col-span-9 px-16 py-8 bg-red-200">{children}</div>
+        <div className="col-span-9 px-16 py-8 bg-white">{children}</div>
       </div>
     </>
   );

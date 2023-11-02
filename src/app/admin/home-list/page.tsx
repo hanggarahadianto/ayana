@@ -16,14 +16,10 @@ const page = async () => {
               <HomeAdminList
                 ID={Home.ID}
                 title={Home.title}
-                // content={Home.content}
                 image={Home.image}
                 params={{
                   id: "",
-                }} // address={Home.address}
-                // bathroom={Home.bathroom}
-                // bedroom={Home.bedroom}
-                // square={Home.square}
+                }}
               />
             </div>
           ))}

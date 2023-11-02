@@ -8,8 +8,15 @@ const page = async () => {
   return (
     <div className="w-full h-screen">
       <div className="">
-        <p className="text-3xl font-bold mb-20">Home List</p>
-        <div className="grid grid-cols-3 gap-x-5 gap-y-4">
+        <p className="text-3xl font-bold mb-20">Reservation List</p>
+        <div className="bg-blue-200 rounded-lg">
+          <div className="grid grid-cols-12 py-4 border-b-2 border-slate-400">
+            <th className="col-span-3">Name</th>
+            <th className="col-span-3">Phone</th>
+            <th className="col-span-3">Date</th>
+            <th className="col-span-3">Time</th>
+          </div>
+
           {reservationList.map((Reservation) => (
             <div key={Reservation.ID}>
               <ReservationAdminList
@@ -18,9 +25,7 @@ const page = async () => {
                 name={Reservation.name}
                 date={Reservation.date}
                 time={Reservation.time}
-                params={{
-                  id: "",
-                }}
+                home_id={Reservation.home_ID}
               />
             </div>
           ))}
