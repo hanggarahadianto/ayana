@@ -7,7 +7,7 @@ const Logo = () => {
   return (
     <Link href={"/dashboard"}>
       <Image
-        className="md:block lg:hidden cursor-pointer"
+        className="lg:hidden md:hidden cursor-pointer"
         src="/images/ayana.png"
         height="50"
         width="50"

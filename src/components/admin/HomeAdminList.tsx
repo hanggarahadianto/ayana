@@ -10,7 +10,7 @@ interface HomeAdminProps {
   };
 }
 
-const HomeAdmin: React.FC<HomeAdminProps> = (data: HomeAdminProps) => {
+const HomeAdminList: React.FC<HomeAdminProps> = (data: HomeAdminProps) => {
   return (
     <div>
       <div
@@ -40,4 +40,4 @@ const HomeAdmin: React.FC<HomeAdminProps> = (data: HomeAdminProps) => {
   );
 };
 
-export default HomeAdmin;
+export default HomeAdminList;

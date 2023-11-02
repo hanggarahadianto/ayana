@@ -40,7 +40,6 @@ const TambahRumah = () => {
 
   type FormData = z.infer<typeof rumahSchema>;
 
-  // const form = new FormData();
   const onSubmit = async (data: FormData) => {
     try {
       const formData = new FormData();
@@ -50,7 +49,7 @@ const TambahRumah = () => {
       formData.append("address", data.address);
       formData.append("bathroom", data.bathroom);
       formData.append("bedroom", data.bedroom);
-      formData.append("bedroo ", data.bedroom);
+      formData.append("bedroom ", data.bedroom);
       formData.append("file", data.file[0]);
 
       const response = await fetch("http://localhost:7000/home/post", {

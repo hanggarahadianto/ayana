@@ -1,9 +1,7 @@
+import HomeAdminList from "@/components/admin/HomeAdminList";
 import { Button } from "@/components/ui/button";
 import { Home } from "@/types/home.types";
 import { GetHomeList } from "@/utils/api/home/getHome.api";
-
-import Link from "next/link";
-import HomeAdmin from "../homeAdmin";
 
 const page = async () => {
   const homeList: Home[] = await GetHomeList();
@@ -15,7 +13,7 @@ const page = async () => {
         <div className="grid grid-cols-3 gap-x-5 gap-y-4">
           {homeList.map((Home) => (
             <div key={Home.ID}>
-              <HomeAdmin
+              <HomeAdminList
                 ID={Home.ID}
                 title={Home.title}
                 // content={Home.content}
