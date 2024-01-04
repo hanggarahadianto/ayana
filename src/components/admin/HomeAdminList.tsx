@@ -19,7 +19,7 @@ const HomeAdminList: React.FC<HomeAdminProps> = (data: HomeAdminProps) => {
       >
         <div className="px-8 py-4 ">
           <Image
-            className="w-60 h-20 rounded-xl object-cover"
+            className="w-60 h-32 rounded-xl object-cover"
             src={data.image}
             alt={data.title}
             priority={false}

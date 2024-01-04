@@ -13,8 +13,8 @@ export default function Footer() {
       <div className=" w-96 px-8 py-4 order-b-2 border-gray-100">
         <Logo />
         <p className="py-8">
-          Avika's powers the worlds best restaurants, using technology to
-          imagine the future of hospitality.
+          Ayana Home best house, using technology to imagine the future of
+          hospitality.
         </p>
         <div className="grid gap-2 grid-cols-4 cursor-pointer">
           <Twitter className="w-16 h-10" />
