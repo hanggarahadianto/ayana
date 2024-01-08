@@ -1,5 +1,8 @@
 export const GetHomeList = async () => {
-  const res = await fetch("http://localhost:7000/home/get", {
+  const url = `${process.env.URL}/home/get`;
+  console.log(url);
+
+  const res = await fetch(url, {
     method: "GET",
     cache: "no-store",
   });

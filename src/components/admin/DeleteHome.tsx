@@ -51,12 +51,12 @@ const DeleteHome: React.FC<PropsID> = async (id: PropsID) => {
               </DialogDescription>
             </DialogHeader>
 
-            <Button
-              onClick={() => handleDelete()}
+            {/* <Button
+              // onClick={() => handleDelete()}
               className="bg-red-400 hover:bg-red-500"
             >
               Delete
-            </Button>
+            </Button> */}
           </div>
         </DialogContent>
       </Dialog>

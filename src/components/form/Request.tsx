@@ -1,6 +1,8 @@
+// "use client";
 "use client";
-
-import { Controller, useForm } from "react-hook-form";
+import * as z from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
@@ -8,16 +10,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../ui/form";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { CalendarIcon } from "@radix-ui/react-icons";
 import { Calendar } from "../ui/calendar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -25,22 +25,33 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import { RequestFormSchema } from "@/utils/schema/OrderFormSchema";
-
-type FormData = z.infer<typeof RequestFormSchema>;
-
+import { sendResponse } from "next/dist/server/image-optimizer";
 interface PropsID {
   params: {
     id: string;
   };
 }
+const formSchema = z.object({
+  name: z.string(),
+  phone: z.string().min(11, "phone is required"),
+  date: z.date({
+    required_error: "A date is required.",
+  }),
+  time: z.string(),
+});
 
+// export default function Home() {
 const RequestForm: React.FC<PropsID> = ({ params }) => {
-  const form = useForm<z.infer<typeof RequestFormSchema>>({
-    resolver: zodResolver(RequestFormSchema),
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
   });
-  const onSubmit = async (data: FormData) => {
+
+  const handleSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
+      // const response = await sendResponse(form);
+      // const url = `${process.env.URL}/resevervation/post`;
+      const url = `http://34.101.222.121:8080/reservation/post/${params.id}`;
+      console.log(url);
       const body = {
         name: data.name,
         phone: data.phone,
@@ -48,136 +59,130 @@ const RequestForm: React.FC<PropsID> = ({ params }) => {
         time: data.time,
         home_id: params.id,
       };
-      console.log(body);
-      const response = await fetch(
-        `http://localhost:7000/reservation/post/${params.id}`,
-        {
-          method: "POST",
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(body),
-        }
-      );
-      if (response.ok) {
-        const responseData = await response.json();
-        console.log("Data received:", responseData);
-
-        const newRequest = await response.json();
-        console.log(newRequest);
-      } else {
-        console.error("Request failed:", response.status);
+      const res = await fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+      console.log(res);
+      if (!res.ok) {
+        throw new Error("Failed to fetch data");
       }
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    } catch (error) {}
   };
+
+  // const handleSubmit = async (data: form) => {
+  //   console.log("clicked");
+  // };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
-        <div className="space-y-2">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
+      <form
+        onSubmit={form.handleSubmit(handleSubmit)}
+        className="w-full space-y-2"
+      >
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => {
+            return (
               <FormItem>
                 <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="john doe" {...field} />
+                  <Input placeholder="Ex. John Doe" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
+            );
+          }}
+        />
+
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => {
+            return (
               <FormItem>
-                <FormLabel>Phone</FormLabel>
+                <FormLabel>Phone Number</FormLabel>
                 <FormControl>
                   <Input placeholder="08568274824" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
-            )}
-          />
+            );
+          }}
+        />
+        <FormField
+          control={form.control}
+          name="date"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel>Date</FormLabel>
 
-          <FormField
-            control={form.control}
-            name="date"
-            render={({ field }) => (
-              <FormItem className="flex flex-col">
-                <FormLabel>Date</FormLabel>
-
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant={"outline"}
-                        className={cn(
-                          "w-[240px] pl-3 text-left font-normal",
-                          !field.value && "text-muted-foreground"
-                        )}
-                      >
-                        {field.value ? (
-                          format(field.value, "PPP")
-                        ) : (
-                          <span>Pick a date</span>
-                        )}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={field.value}
-                      onSelect={field.onChange}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="time"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Time</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
+              <Popover>
+                <PopoverTrigger asChild>
                   <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select time when you come" />
-                    </SelectTrigger>
+                    <Button
+                      variant={"outline"}
+                      className={cn(
+                        "w-[240px] pl-3 text-left font-normal",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value ? (
+                        format(field.value, "PPP")
+                      ) : (
+                        <span>Pick a date</span>
+                      )}
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                    </Button>
                   </FormControl>
-                  <SelectContent>
-                    <SelectItem value="16.00">10.00</SelectItem>
-                    <SelectItem value="17.00">11.00</SelectItem>
-                    <SelectItem value="19.00">12.00</SelectItem>
-                    <SelectItem value="20.00">13.00</SelectItem>
-                    <SelectItem value="21.00">14.00</SelectItem>
-                    <SelectItem value="21.00">15.00</SelectItem>
-                    <SelectItem value="21.00">16.00</SelectItem>
-                  </SelectContent>
-                </Select>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={field.value}
+                    onSelect={field.onChange}
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="time"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Time</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select time when you come" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="10.00">10.00</SelectItem>
+                  <SelectItem value="11.00">11.00</SelectItem>
+                  <SelectItem value="12.00">12.00</SelectItem>
+                  <SelectItem value="13.00">13.00</SelectItem>
+                  <SelectItem value="14.00">14.00</SelectItem>
+                  <SelectItem value="15.00">15.00</SelectItem>
+                  <SelectItem value="16.00">16.00</SelectItem>
+                </SelectContent>
+              </Select>
 
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-        <Button className="w-full mt-6" type="submit">
-          Order Now
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit" className="w-full">
+          Submit
         </Button>
       </form>
     </Form>
