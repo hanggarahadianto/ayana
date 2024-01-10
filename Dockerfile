@@ -1,5 +1,5 @@
 # Use the official Node.js image as the base image
-FROM node:14
+FROM node:20-alpine AS base
 
 # Set the working directory inside the container
 WORKDIR /ayana-nextjs
@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Expose the port on which the app will run
-EXPOSE 9000
+EXPOSE 3000
 
 # Start the Next.js app in production mode
 CMD ["npm", "start"]

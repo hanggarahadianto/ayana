@@ -12,7 +12,7 @@ const HomeCard: React.FC<HomeProps> = (data: HomeProps) => {
   return (
     <div>
       <Link href={`/home/${data.ID}`}>
-        <div className="md:max-w-md md:mx-auto h-72 lg:h-96 shadow-md rounded-xl overflow-hidden relative">
+        <div className="md:max-w-md md:mx-auto h-72 lg:h-96 shadow-md rounded-xl overflow-hidden relative bg-white">
           <Image
             className="lg:hidden"
             src={data.image}

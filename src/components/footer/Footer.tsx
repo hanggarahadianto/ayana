@@ -33,7 +33,7 @@ export default function Footer() {
 
         <div className="flex gap-y-4 mt-10 px-8 lg:ml-40">
           <div className="">
-            <p>Discover Book</p>
+            <p>Discover Home</p>
             <p>Nearby Restaurant</p>
             <p>Stories</p>
             <p>Guide</p>
