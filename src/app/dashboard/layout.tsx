@@ -2,6 +2,7 @@ import Community from "@/components/community/Community";
 import Footer from "@/components/footer/Footer";
 import LandingPage from "@/components/landingpage/LandingPage";
 import Navbar from "@/components/navbar/Navbar";
+import DashboardSection from "@/components/section/DashboardSection";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
@@ -22,7 +23,7 @@ export default function DashboardLayout({
       <body className={quicksland.className}>
         <Navbar />
         <LandingPage />
-
+        <DashboardSection />
         {children}
 
         <Community />

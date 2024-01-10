@@ -1,14 +1,22 @@
 import Image from "next/image";
 import React from "react";
+import { Anton } from "next/font/google";
+
+const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export default function DashboardSection() {
   return (
     <div className="flex justify-center">
       <div className="px-12 py-12">
         <div className="flex justify-center">
-          <p className="text-3xl font-bold text-purple-800 content-center ">
-            Featured House
-          </p>
+          <div className={anton.className}>
+            <p className="text-3xl font-bold text-purple-800 content-center ">
+              Featured House
+            </p>
+          </div>
         </div>
 
         <div className="flex justify-center ">
