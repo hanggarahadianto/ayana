@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Logo = () => {
   return (
-    <Link href={"/dashboard"}>
+    <Link href={"/"}>
       <Image
         className="lg:hidden md:hidden cursor-pointer"
         src="/images/ayana.png"

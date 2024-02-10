@@ -9,8 +9,8 @@ const page = async () => {
     <div className="w-full h-screen">
       <div className="">
         <p className="text-3xl font-bold mb-20">Reservation List</p>
-        <div className="bg-blue-200 rounded-lg">
-          <div className="grid grid-cols-12 py-4 border-b-2 border-slate-400">
+        <div className="rounded-lg">
+          <div className="grid grid-cols-12 py-4">
             <th className="col-span-3">Name</th>
             <th className="col-span-3">Phone</th>
             <th className="col-span-3">Date</th>

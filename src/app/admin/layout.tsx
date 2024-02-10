@@ -62,7 +62,7 @@ export default function AdminLayout({
             </div>
           </div>
         </div>
-        <div className="col-span-9 px-16 py-8 bg-white">{children}</div>
+        <div className="col-span-9 px-16 py-8 bg-slate-100">{children}</div>
       </div>
     </>
   );

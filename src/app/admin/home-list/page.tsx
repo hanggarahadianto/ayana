@@ -11,7 +11,7 @@ const page = async () => {
         <p className="text-3xl font-bold mb-20">Home List</p>
         <div className="grid grid-cols-3 gap-x-5 gap-y-4">
           {homeList.map((Home) => (
-            <div key={Home.ID}>
+            <div key={Home.ID} className="">
               <HomeAdminList
                 ID={Home.ID}
                 title={Home.title}

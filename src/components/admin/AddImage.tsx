@@ -34,7 +34,7 @@ export default function Upload() {
     formData.append("file", image);
     formData.append("title", title);
 
-    const uploadResponse = await fetch("http://localhost:7000/home/img", {
+    const uploadResponse = await fetch("http://localhost:8080/home/img", {
       method: "POST",
       mode: "no-cors",
 

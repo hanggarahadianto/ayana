@@ -7,6 +7,5 @@ export const HomeFormSchema = z.object({
   bathroom: z.string().min(1, "bathroom is required"),
   bedroom: z.string().min(1, "bedroom is required"),
   square: z.string().min(1, "square is required"),
-  // file: z.string().min(1, "image is required"),
   file: z.any(),
 });

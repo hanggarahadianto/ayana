@@ -1,8 +1,9 @@
-// "use client";
 "use client";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Marketing } from "@/types/marketing.types";
+
 import {
   Form,
   FormControl,
@@ -25,7 +26,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import { sendResponse } from "next/dist/server/image-optimizer";
+import { SendRequest } from "@/utils/api/request/postRequest.api";
 interface PropsID {
   params: {
     id: string;
@@ -40,7 +41,6 @@ const formSchema = z.object({
   time: z.string(),
 });
 
-// export default function Home() {
 const RequestForm: React.FC<PropsID> = ({ params }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -48,10 +48,6 @@ const RequestForm: React.FC<PropsID> = ({ params }) => {
 
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      // const response = await sendResponse(form);
-      // const url = `${process.env.URL}/resevervation/post`;
-      const url = `http://34.101.222.121:8080/reservation/post/${params.id}`;
-      console.log(url);
       const body = {
         name: data.name,
         phone: data.phone,
@@ -59,24 +55,11 @@ const RequestForm: React.FC<PropsID> = ({ params }) => {
         time: data.time,
         home_id: params.id,
       };
-      const res = await fetch(url, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-      console.log(res);
-      if (!res.ok) {
-        throw new Error("Failed to fetch data");
-      }
-    } catch (error) {}
+      await SendRequest({ params }, { body });
+    } catch (error) {
+      throw new Error("Failed to fetch data");
+    }
   };
-
-  // const handleSubmit = async (data: form) => {
-  //   console.log("clicked");
-  // };
 
   return (
     <Form {...form}>
@@ -181,6 +164,7 @@ const RequestForm: React.FC<PropsID> = ({ params }) => {
             </FormItem>
           )}
         />
+
         <Button type="submit" className="w-full">
           Submit
         </Button>

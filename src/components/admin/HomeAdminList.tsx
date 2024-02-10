@@ -1,5 +1,11 @@
 import DeleteHome from "@/components/admin/DeleteHome";
 import Image from "next/image";
+import { Roboto } from "next/font/google";
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 interface HomeAdminProps {
   ID: string;
@@ -15,7 +21,7 @@ const HomeAdminList: React.FC<HomeAdminProps> = (data: HomeAdminProps) => {
     <div>
       <div
         key={data.ID}
-        className="md:max-w-md md:mx-auto md:h-56 w-72 shadow-md rounded-xl overflow-hidden relative"
+        className="md:max-w-md md:mx-auto md:h-56 w-72 shadow-md rounded-xl overflow-hidden relative bg-slate-200"
       >
         <div className="px-8 py-4 ">
           <Image
@@ -30,7 +36,9 @@ const HomeAdminList: React.FC<HomeAdminProps> = (data: HomeAdminProps) => {
         </div>
 
         <div className="flex justify-between px-4">
-          <h3 className="text-md font-semibold text-green-500">{data.title}</h3>
+          <div className={roboto.className}>
+            <h3 className="text-md font-semibold text-black">{data.title}</h3>
+          </div>
           <div>
             <DeleteHome params={data.params} />
           </div>

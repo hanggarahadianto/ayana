@@ -7,5 +7,4 @@ export interface Home {
   bathroom: string;
   bedroom: string;
   square: string;
-  //   restaurant_iD: string;
 }

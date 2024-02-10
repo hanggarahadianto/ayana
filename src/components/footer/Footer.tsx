@@ -6,6 +6,7 @@ import {
   YoutubeIcon,
 } from "lucide-react";
 import Logo from "../navbar/Logo";
+import { Marketing } from "@/types/marketing.types";
 
 export default function Footer() {
   return (

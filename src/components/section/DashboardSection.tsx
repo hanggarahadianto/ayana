@@ -21,8 +21,8 @@ export default function DashboardSection() {
 
         <div className="flex justify-center ">
           <p className="mt-3 font-semibold w-96 lg:w-full text-center">
-            Di Springhill Yume Green, Anda dapat menikmati berbagai fasilitas
-            unggulan yang akan membuat Anda betah tinggal di sini
+            Di Ayana, Anda dapat menikmati berbagai fasilitas unggulan yang akan
+            membuat Anda betah tinggal di sini
           </p>
         </div>
         <div className="flex justify-center">

@@ -50,9 +50,10 @@ const TambahRumah = () => {
       formData.append("bathroom", data.bathroom);
       formData.append("bedroom", data.bedroom);
       formData.append("bedroom ", data.bedroom);
+      formData.append("square", data.square);
       formData.append("file", data.file[0]);
 
-      const response = await fetch("http://localhost:7000/home/post", {
+      const response = await fetch("http://localhost:8080/home/post", {
         method: "POST",
         mode: "no-cors",
         headers: {

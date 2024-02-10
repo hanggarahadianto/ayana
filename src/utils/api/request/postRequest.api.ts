@@ -9,27 +9,26 @@ interface RequesData {
   home_id: string;
 }
 
-export const SendRequest = async (data: RequesData): Promise<any> => {
-  const url = `${process.env.URL}/reservation/post/${data.home_id}`;
-  //   const url = `${process.env.URL}/reservation/post/${params.id}`;
-  //   const body = {
-  //     name: data.name,
-  //     phone: data.phone,
-  //     date: data.date.toDateString(),
-  //     time: data.time,
-  //     // home_id: params.id,
-  //   };
+export const SendRequest = async (
+  { params }: any,
+  { body }: any
+): Promise<any> => {
+  const url = `http://localhost:8080/reservation/post/${params.id}`;
+  // const url = `${process.env.NEXT_PUBLIC_API_URL}/reservation/post/${params.id}`;
+
   console.log(url);
 
-  const res = await fetch(url, {
+  const response = await fetch(url, {
     method: "POST",
     mode: "no-cors",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(body),
   });
-  if (!res.ok) {
+  console.log(response);
+
+  if (!response.ok) {
     throw new Error("Failed to fetch data");
   }
 };
