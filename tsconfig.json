@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/admin/post-home"
+    "app/admin/post-home"
   ],
   "exclude": ["node_modules"]
 }

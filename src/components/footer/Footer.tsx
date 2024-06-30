@@ -6,7 +6,7 @@ import {
   YoutubeIcon,
 } from "lucide-react";
 import Logo from "../navbar/Logo";
-import { Marketing } from "@/types/marketing.types";
+import { Link } from "@nextui-org/link";
 
 export default function Footer() {
   return (
@@ -45,6 +45,7 @@ export default function Footer() {
             <span className="font-semibold">Contact Us</span>
             <p>Admin Officer : +628534938535</p>
             <p>Email Officer : ayanagrup@gmail.com</p>
+            <Link href="/admin">Admin</Link>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 export const GetMarketingList = async () => {
-  const url = `${process.env.URL}/marketing/get`;
+  const url = `http://localhost:8080/marketing/get`;
+  // const url = `${process.env.URL}/marketing/get`;
   console.log(url);
 
   const res = await fetch(url, {

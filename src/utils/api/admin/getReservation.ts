@@ -1,5 +1,7 @@
 export const GetReservationList = async () => {
-  const url = `${process.env.URL}/reservation/get`;
+  // const url = `${process.env.URL}/reservation/get`;
+  const url = `http://localhost:8080/reservation/get`;
+  console.log(url);
 
   const res = await fetch(url, {
     method: "GET",

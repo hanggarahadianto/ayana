@@ -1,6 +1,3 @@
-import Community from "@/components/community/Community";
-import Footer from "@/components/footer/Footer";
-import Navbar from "@/components/navbar/Navbar";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
@@ -18,13 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={quicksland.className}>
-        {/* <Navbar /> */}
-        {children}
-
-        {/* <Community />
-        <Footer /> */}
-      </body>
+      <body className={quicksland.className}>{children}</body>
     </html>
   );
 }

@@ -2,7 +2,7 @@ import ReservationAdminList from "@/components/admin/ReservationList";
 import { Reservation } from "@/types/reservation.types";
 import { GetReservationList } from "@/utils/api/admin/getReservation";
 
-const page = async () => {
+const ReservationPage = async () => {
   const reservationList: Reservation[] = await GetReservationList();
 
   return (
@@ -35,4 +35,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default ReservationPage;

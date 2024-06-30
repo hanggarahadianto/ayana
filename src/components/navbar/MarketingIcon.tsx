@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 
 const MarketingModal = () => {
   return (
-    <Link href={"/"}>
+    <div className="">
       <div className="flex justify-between text-center">
         <Image
           className="lg:hidden md:hidden cursor-pointer"
@@ -25,7 +24,7 @@ const MarketingModal = () => {
           <p>Hubungi Kami</p>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
